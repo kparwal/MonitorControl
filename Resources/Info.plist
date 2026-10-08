@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>        <string>dev.monitorctl.MonitorControl</string>
+    <key>CFBundleName</key>              <string>MonitorControl</string>
+    <key>CFBundleExecutable</key>        <string>MonitorControl</string>
+    <key>CFBundlePackageType</key>       <string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>0.1.0</string>
+    <key>CFBundleVersion</key>           <string>1</string>
+    <key>LSMinimumSystemVersion</key>    <string>14.2</string>
+    <key>LSUIElement</key>               <true/>
+    <key>NSAudioCaptureUsageDescription</key>
+    <string>MonitorControl captures audio headed to your external monitors so it can control their volume.</string>
+</dict>
+</plist>
