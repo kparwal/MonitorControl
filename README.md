@@ -33,8 +33,12 @@ walking the IORegistry: the DCP that owns a display's AV service proxy also owns
 ## Build and install
 
 ```sh
-make install   # CLI → ~/.local/bin/monitorctl, app → ~/Applications/MonitorControl.app
+make install   # app → /Applications/MonitorControl.app, CLI → ~/.local/bin/monitorctl
 ```
+
+After installing, launch it from Spotlight (Cmd+Space, "MonitorControl"). Launching it
+again while it's running opens the menu bar panel. Turn on "Launch at login" in the
+panel to start it automatically. `make icon` regenerates `Resources/AppIcon.icns`.
 
 Volume needs the **System Audio Recording** permission, which MonitorControl asks for the first
 time it needs it. The app is ad-hoc signed, so macOS may ask again after each rebuild.

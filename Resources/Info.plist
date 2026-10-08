@@ -4,6 +4,10 @@
 <dict>
     <key>CFBundleIdentifier</key>        <string>dev.monitorctl.MonitorControl</string>
     <key>CFBundleName</key>              <string>MonitorControl</string>
+    <key>CFBundleDisplayName</key>       <string>MonitorControl</string>
+    <key>CFBundleIconFile</key>          <string>AppIcon</string>
+    <key>LSApplicationCategoryType</key> <string>public.app-category.utilities</string>
+    <key>NSHighResolutionCapable</key>   <true/>
     <key>CFBundleExecutable</key>        <string>MonitorControl</string>
     <key>CFBundlePackageType</key>       <string>APPL</string>
     <key>CFBundleShortVersionString</key><string>0.1.0</string>

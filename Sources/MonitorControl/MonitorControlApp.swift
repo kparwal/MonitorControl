@@ -3,6 +3,7 @@ import SwiftUI
 
 @main
 struct MonitorControlApp: App {
+    @NSApplicationDelegateAdaptor private var delegate: AppDelegate
     @StateObject private var model = Model()
 
     var body: some Scene {
@@ -12,6 +13,35 @@ struct MonitorControlApp: App {
             Image(systemName: "sun.max")
         }
         .menuBarExtraStyle(.window)
+    }
+}
+
+/// Launching the app again (Spotlight, Finder, Dock) while it's running opens the panel.
+/// Menu bar apps otherwise do nothing visible on reopen, which feels broken.
+final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+        openPanel()
+        return false
+    }
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // Opened by hand (not as a login item): show the panel so the launch is visible.
+        let event = NSAppleEventManager.shared().currentAppleEvent
+        let isLoginItem = event?.paramDescriptor(forKeyword: keyAEPropData)?.enumCodeValue == keyAELaunchedAsLogInItem
+        if !isLoginItem {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.openPanel() }
+        }
+    }
+
+    private func openPanel() {
+        // MenuBarExtra has no API to open itself; click its status item button.
+        for window in NSApp.windows where window.className.contains("NSStatusBarWindow") {
+            if let button = window.contentView?.subviews.first(where: { $0 is NSStatusBarButton }) as? NSStatusBarButton
+                ?? (window.contentView as? NSStatusBarButton) {
+                button.performClick(nil)
+                return
+            }
+        }
     }
 }
 
